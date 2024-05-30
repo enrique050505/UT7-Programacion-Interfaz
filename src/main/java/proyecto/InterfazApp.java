@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import java.awt.Font;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import javax.swing.JTextPane;
@@ -28,8 +30,7 @@ public class InterfazApp extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private Document pokemonInfo = null;
-    static JLabel LblMonedas = new JLabel("MONEDAS");
-    static JLabel lblCantidadMonedas = new JLabel("100");
+    static JLabel lblCantidadMonedas = new JLabel("");
     static JLabel lblText_InformacionGeneral = new JLabel("Información General");
     static JLabel lblMostrarNombre = new JLabel();
     static JLabel lblMostrarNumero = new JLabel();
@@ -38,7 +39,7 @@ public class InterfazApp extends JFrame {
     static JLabel lblTipo1 = new JLabel();
     static JLabel lblTipo2 = new JLabel();
     static JTextArea textAreaDescripcion = new JTextArea();
-    static JLabel lblText_Estadisticas = new JLabel("Estadísiticas");
+    static JLabel lblText_Estadisticas = new JLabel("Estadísticas");
     static JLabel lbPS = new JLabel("PS");
     static JLabel lblMostrarPS = new JLabel();
     static JLabel lblAtaque = new JLabel("Ataque");
@@ -59,9 +60,6 @@ public class InterfazApp extends JFrame {
     static JLabel lblImgMonedas = new JLabel("");
     static JLabel lblIMG_Personaje = new JLabel("Bienvenido a la Pokédex. Elige bien con las monedas que tienes");
     static JLabel lblIMG_Pokemon = new JLabel("");
-    static int monedas = 100;
-    private final JCheckBox chckbxNewCheckBox_Pokemon2 = new JCheckBox("");
-    private final JCheckBox chckbxNewCheckBox_Pokemon3 = new JCheckBox("");
     
 
     /**
@@ -96,7 +94,7 @@ public class InterfazApp extends JFrame {
 
         lblCantidadMonedas.setFont(new Font("Tahoma", Font.BOLD, 30));
         lblCantidadMonedas.setForeground(new Color(0, 0, 0));
-        lblCantidadMonedas.setBounds(583, 59, 70, 40);
+        lblCantidadMonedas.setBounds(52, 264, 70, 40);
         contentPane.add(lblCantidadMonedas);
         
         JPanel panelSeleccionPokemons = new JPanel();
@@ -135,7 +133,7 @@ public class InterfazApp extends JFrame {
         btnPokemon3.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
-        		Document infoPokemon = nuevoConector.mostrarInfo("Metapod");
+        		Document infoPokemon = nuevoConector.mostrarInfo("Lucario");
         		updateLabels(infoPokemon);
         	}
         });
@@ -152,7 +150,7 @@ public class InterfazApp extends JFrame {
         Document infoPokemon2 = nuevoConector.mostrarInfo("Squirtle");
         btnPokemon2.setText(infoPokemon2.getString("nombre") + " - " + infoPokemon2.getString("precio") + "€");
         
-        Document infoPokemon3 = nuevoConector.mostrarInfo("Metapod");
+        Document infoPokemon3 = nuevoConector.mostrarInfo("Lucario");
         btnPokemon3.setText(infoPokemon3.getString("nombre") + " - " + infoPokemon3.getString("precio") + "€");
         
         //BOTONES COMPRAR Y VENDER PRIMER POKEMON
@@ -231,19 +229,25 @@ public class InterfazApp extends JFrame {
         btnVenderPokemon3.setEnabled(false); 
         
         JCheckBox chckbxNewCheckBox_Pokemon1 = new JCheckBox("");
+        chckbxNewCheckBox_Pokemon1.setEnabled(false);
         chckbxNewCheckBox_Pokemon1.setHorizontalAlignment(SwingConstants.CENTER);
         chckbxNewCheckBox_Pokemon1.setBackground(new Color(255, 255, 255));
         chckbxNewCheckBox_Pokemon1.setBounds(6, 57, 45, 38);
         panelSeleccionPokemons.add(chckbxNewCheckBox_Pokemon1);
+        
+        JCheckBox chckbxNewCheckBox_Pokemon2 = new JCheckBox("");
+        chckbxNewCheckBox_Pokemon2.setEnabled(false);
         chckbxNewCheckBox_Pokemon2.setHorizontalAlignment(SwingConstants.CENTER);
         chckbxNewCheckBox_Pokemon2.setBackground(Color.WHITE);
         chckbxNewCheckBox_Pokemon2.setBounds(6, 213, 45, 38);
-        
         panelSeleccionPokemons.add(chckbxNewCheckBox_Pokemon2);
-        chckbxNewCheckBox_Pokemon3.setHorizontalAlignment(SwingConstants.CENTER);
-        chckbxNewCheckBox_Pokemon3.setBackground(Color.WHITE);
-        chckbxNewCheckBox_Pokemon3.setBounds(6, 380, 45, 38);
         
+        JCheckBox chckbxNewCheckBox_Pokemon3 = new JCheckBox("");
+        chckbxNewCheckBox_Pokemon3.setEnabled(false);
+        chckbxNewCheckBox_Pokemon3.setFont(new Font("Tahoma", Font.PLAIN, 10));
+        chckbxNewCheckBox_Pokemon3.setHorizontalAlignment(SwingConstants.CENTER);
+        chckbxNewCheckBox_Pokemon3.setBackground(new Color(255, 255, 255));
+        chckbxNewCheckBox_Pokemon3.setBounds(6, 380, 45, 38);
         panelSeleccionPokemons.add(chckbxNewCheckBox_Pokemon3);
         
         //ACCIONES PARA BOTONES DEL POKEMON 3
@@ -268,139 +272,149 @@ public class InterfazApp extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.WHITE);
-        panel.setBounds(711, 330, 643, 443);
+        panel.setBounds(727, 299, 643, 490);
         contentPane.add(panel);
         panel.setLayout(null);
         
         JLabel lblNombre = new JLabel("Nombre");
         lblNombre.setBackground(new Color(255, 255, 255));
         lblNombre.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNombre.setFont(new Font("Tahoma", Font.BOLD, 18));
-        lblNombre.setBounds(10, 10, 73, 22);
+        lblNombre.setFont(new Font("Arial", Font.BOLD, 20));
+        lblNombre.setBounds(10, 10, 102, 22);
         panel.add(lblNombre);
         
         lblMostrarNombre.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarNombre.setBounds(104, 10, 112, 22);
+        lblMostrarNombre.setBounds(104, 10, 187, 22);
         panel.add(lblMostrarNombre);
         
         JLabel lblNumeroPokedex = new JLabel("Nº");
-        lblNumeroPokedex.setFont(new Font("Tahoma", Font.BOLD, 18));
-        lblNumeroPokedex.setBounds(242, 10, 29, 22);
+        lblNumeroPokedex.setFont(new Font("Arial", Font.BOLD, 20));
+        lblNumeroPokedex.setBounds(320, 10, 29, 22);
         panel.add(lblNumeroPokedex);
         
-        lblMostrarNumero.setFont(new Font("Tahoma", Font.BOLD, 20));
-        lblMostrarNumero.setBounds(281, 0, 52, 32);
+        lblMostrarNumero.setFont(new Font("Arial", Font.BOLD, 20));
+        lblMostrarNumero.setBounds(359, 10, 67, 22);
         panel.add(lblMostrarNumero);
         
         lblImagenPokemon.setFont(new Font("Arial", Font.BOLD, 13));
-        lblImagenPokemon.setBounds(10, 47, 195, 134);
+        lblImagenPokemon.setBounds(10, 37, 216, 169);
         panel.add(lblImagenPokemon);
+        lblTipos.setHorizontalAlignment(SwingConstants.CENTER);
         
-        lblTipos.setFont(new Font("Arial", Font.BOLD, 18));
-        lblTipos.setBounds(396, 12, 73, 22);
+        lblTipos.setFont(new Font("Arial", Font.BOLD, 20));
+        lblTipos.setBounds(541, 11, 73, 22);
         panel.add(lblTipos);
+        lblTipo1.setHorizontalAlignment(SwingConstants.CENTER);
 
-        lblTipo1.setFont(new Font("SansSerif", Font.BOLD, 20));
-        lblTipo1.setBounds(493, 47, 83, 22);
+        lblTipo1.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTipo1.setBounds(531, 43, 102, 26);
         panel.add(lblTipo1);
+        lblTipo2.setHorizontalAlignment(SwingConstants.CENTER);
         
-        lblTipo2.setFont(new Font("SansSerif", Font.BOLD, 20));
-        lblTipo2.setBounds(503, 79, 83, 22);
+        lblTipo2.setFont(new Font("Arial", Font.BOLD, 18));
+        lblTipo2.setBounds(531, 79, 102, 26);
         panel.add(lblTipo2);
-        textAreaDescripcion.setBackground(Color.WHITE);
         
+        textAreaDescripcion.setForeground(new Color(255, 255, 255));
+        textAreaDescripcion.setBackground(new Color(0, 0, 0));
         textAreaDescripcion.setFont(new Font("Verdana", Font.PLAIN, 14));
         textAreaDescripcion.setEditable(false); 
         textAreaDescripcion.setLineWrap(true); 
         textAreaDescripcion.setWrapStyleWord(true);
-        textAreaDescripcion.setBounds(227, 64, 216, 117);
+        textAreaDescripcion.setBounds(267, 60, 205, 140);
         panel.add(textAreaDescripcion);
         
         JSeparator separator = new JSeparator();
         separator.setForeground(new Color(0, 0, 0));
         separator.setBackground(new Color(0, 0, 0));
-        separator.setBounds(0, 191, 593, 2);
+        separator.setBounds(0, 210, 643, 2);
         panel.add(separator);
         
         lbPS.setHorizontalAlignment(SwingConstants.LEFT);
         lbPS.setFont(new Font("Arial", Font.BOLD, 20));
-        lbPS.setBounds(32, 277, 83, 16);
+        lbPS.setBounds(43, 310, 37, 32);
         panel.add(lbPS);
         
         lblMostrarPS.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarPS.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarPS.setBounds(104, 261, 44, 32);
+        lblMostrarPS.setBounds(139, 310, 44, 36);
         panel.add(lblMostrarPS);
         
         lblAtaque.setHorizontalAlignment(SwingConstants.CENTER);
         lblAtaque.setFont(new Font("Arial", Font.BOLD, 20));
-        lblAtaque.setBounds(22, 322, 83, 31);
+        lblAtaque.setBounds(29, 376, 83, 31);
         panel.add(lblAtaque);
         
         lblMostrarAtaque.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarAtaque.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarAtaque.setBounds(122, 369, 52, 44);
+        lblMostrarAtaque.setBounds(139, 376, 44, 41);
         panel.add(lblMostrarAtaque);
         
         lblDefensa.setHorizontalAlignment(SwingConstants.CENTER);
         lblDefensa.setFont(new Font("Arial", Font.BOLD, 20));
-        lblDefensa.setBounds(22, 377, 83, 22);
+        lblDefensa.setBounds(29, 443, 83, 22);
         panel.add(lblDefensa);
         
         lblMostrarDefensa.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarDefensa.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarDefensa.setBounds(122, 322, 64, 44);
+        lblMostrarDefensa.setBounds(139, 436, 44, 41);
         panel.add(lblMostrarDefensa);
         
         lblATEsp.setHorizontalAlignment(SwingConstants.CENTER);
         lblATEsp.setFont(new Font("Arial", Font.BOLD, 20));
-        lblATEsp.setBounds(415, 228, 91, 22);
+        lblATEsp.setBounds(402, 255, 91, 22);
         panel.add(lblATEsp);
         
+        lblMostrarAtaqueEspecial.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarAtaqueEspecial.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarAtaqueEspecial.setBounds(516, 204, 46, 46);
+        lblMostrarAtaqueEspecial.setBounds(541, 252, 44, 32);
         panel.add(lblMostrarAtaqueEspecial);
         
         lblDefEsp.setHorizontalAlignment(SwingConstants.CENTER);
         lblDefEsp.setFont(new Font("Arial", Font.BOLD, 20));
-        lblDefEsp.setBounds(415, 276, 105, 18);
+        lblDefEsp.setBounds(401, 317, 105, 18);
         panel.add(lblDefEsp);
         
+        lblMostrarDefensaEspecial.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarDefensaEspecial.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarDefensaEspecial.setBounds(517, 249, 52, 44);
+        lblMostrarDefensaEspecial.setBounds(541, 305, 44, 41);
         panel.add(lblMostrarDefensaEspecial);
      
         lblVelocidad.setHorizontalAlignment(SwingConstants.CENTER);
         lblVelocidad.setFont(new Font("Arial", Font.BOLD, 20));
-        lblVelocidad.setBounds(415, 330, 105, 14);
+        lblVelocidad.setBounds(401, 380, 105, 23);
         panel.add(lblVelocidad);
         
+        lblMostrarVelocidad.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarVelocidad.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarVelocidad.setBounds(530, 304, 46, 49);
+        lblMostrarVelocidad.setBounds(541, 371, 44, 41);
         panel.add(lblMostrarVelocidad);
         
         lblAltura.setHorizontalAlignment(SwingConstants.CENTER);
         lblAltura.setFont(new Font("Arial", Font.BOLD, 20));
-        lblAltura.setBounds(22, 236, 83, 22);
+        lblAltura.setBounds(29, 255, 83, 22);
         panel.add(lblAltura);
         
+        lblMostrarAltura.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarAltura.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarAltura.setBounds(104, 212, 52, 46);
+        lblMostrarAltura.setBounds(139, 248, 44, 36);
         panel.add(lblMostrarAltura);
         
         lblPeso.setHorizontalAlignment(SwingConstants.CENTER);
         lblPeso.setFont(new Font("Arial", Font.BOLD, 20));
-        lblPeso.setBounds(415, 379, 73, 18);
+        lblPeso.setBounds(420, 445, 73, 18);
         panel.add(lblPeso);
         
+        lblMostrarPeso.setHorizontalAlignment(SwingConstants.CENTER);
         lblMostrarPeso.setFont(new Font("Arial", Font.BOLD, 20));
-        lblMostrarPeso.setBounds(504, 355, 52, 44);
+        lblMostrarPeso.setBounds(541, 436, 44, 41);
         panel.add(lblMostrarPeso);
         
+        lblText_Estadisticas.setForeground(new Color(255, 0, 128));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
-        lblText_Estadisticas.setBounds(227, 201, 141, 22);
+        lblText_Estadisticas.setBounds(200, 216, 187, 32);
         panel.add(lblText_Estadisticas);
-        lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 20));
+        lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
         
         lblIMG_Personaje.setFont(new Font("Bell MT", Font.BOLD | Font.ITALIC, 20));
         lblIMG_Personaje.setHorizontalAlignment(SwingConstants.LEFT);
@@ -411,35 +425,41 @@ public class InterfazApp extends JFrame {
         lblImgMonedas.setIcon(new ImageIcon(getClass().getClassLoader().getResource(("img/monedas.jpg"))));
         lblImgMonedas.setBounds(113, 264, 79, 56);
         contentPane.add(lblImgMonedas);
-        lblText_InformacionGeneral.setHorizontalAlignment(SwingConstants.CENTER);
         
+        lblText_InformacionGeneral.setHorizontalAlignment(SwingConstants.CENTER);
         lblText_InformacionGeneral.setForeground(new Color(128, 0, 128));
         lblText_InformacionGeneral.setFont(new Font("Tahoma", Font.BOLD, 30));
-        lblText_InformacionGeneral.setBounds(850, 280, 327, 40);
+        lblText_InformacionGeneral.setBounds(923, 249, 327, 40);
         contentPane.add(lblText_InformacionGeneral);
         
         lblMensajeAlUsuario.setBackground(new Color(255, 255, 128));
         lblMensajeAlUsuario.setForeground(new Color(255, 255, 255));
         lblMensajeAlUsuario.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
         lblMensajeAlUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMensajeAlUsuario.setBounds(449, 233, 528, 56);
+        lblMensajeAlUsuario.setBounds(441, 229, 405, 41);
         contentPane.add(lblMensajeAlUsuario);
         
+        //USUARIOS: COMBOBOX Y BOTON
         JComboBox comboBox_Usuario = new JComboBox();
         comboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 14));
         comboBox_Usuario.setModel(new DefaultComboBoxModel(new String[] {"Seleccionar Usuario"}));
         comboBox_Usuario.setToolTipText("");
-        comboBox_Usuario.setBounds(80, 167, 177, 40);
+        comboBox_Usuario.setBounds(82, 154, 177, 40);
         contentPane.add(comboBox_Usuario);
         
         JButton btnUsuario = new JButton("Actualizar Usuario");
+        btnUsuario.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		
+        	}
+        });
         btnUsuario.setForeground(new Color(0, 0, 255));
         btnUsuario.setFont(new Font("Verdana", Font.BOLD, 20));
-        btnUsuario.setBounds(308, 168, 250, 41);
+        btnUsuario.setBounds(308, 151, 250, 41);
         contentPane.add(btnUsuario);
-        lblIMG_Pokemon.setBounds(762, 54, 588, 215);
+
+        lblIMG_Pokemon.setBounds(795, 24, 588, 215);
         contentPane.add(lblIMG_Pokemon);
-        
         lblIMG_Pokemon.setIcon(new ImageIcon(getClass().getClassLoader().getResource(("img/Pokemon-Logo.jpg"))));
         
         JSeparator separator_1 = new JSeparator();
@@ -453,7 +473,8 @@ public class InterfazApp extends JFrame {
     private void updateLabels(Document infoPokemon) {
     	lblMostrarNombre.setText(infoPokemon.getString("nombre"));
     	lblMostrarNumero.setText(infoPokemon.getString("numero"));
-    	lblImagenPokemon.setIcon(new ImageIcon(getClass().getClassLoader().getResource("img/" + infoPokemon.getString("nombre") + ".png")));
+    	ImageIcon imagen = ajustarTamañoImagen("img/" + infoPokemon.getString("nombre")+".png", lblImagenPokemon.getWidth(), lblImagenPokemon.getHeight());
+    	lblImagenPokemon.setIcon(imagen);
     	lblTipo1.setText(infoPokemon.getString("primerTipo"));
     	if(infoPokemon != null) {
     		lblTipo2.setText(infoPokemon.getString("segundoTipo"));
@@ -478,13 +499,13 @@ public class InterfazApp extends JFrame {
         if (monedas>=precio) {
             monedas = monedas - precio;
             lblCantidadMonedas.setText(String.valueOf(monedas));
-            lblMensajeAlUsuario.setText("Acabas de comprar a " + nombrePokemon + "!!!!!");
+            lblMensajeAlUsuario.setText("¡¡¡¡Acabas de comprar a " + nombrePokemon + "!!!!!");
             lblMensajeAlUsuario.setBackground(new Color(46, 204, 113));
             lblMensajeAlUsuario.setOpaque(true);
             btnVender.setEnabled(true);
             btnComprar.setEnabled(false);
         }else{
-        	lblMensajeAlUsuario.setText("No tienes las monedas suficientes para comprar a " + nombrePokemon);
+        	lblMensajeAlUsuario.setText("No tienes monedas para comprar a " + nombrePokemon);
         	lblMensajeAlUsuario.setBackground(new Color(189, 195, 199));
         	lblMensajeAlUsuario.setOpaque(true);
         }
@@ -504,4 +525,14 @@ public class InterfazApp extends JFrame {
         btnVender.setEnabled(false);
         btnComprar.setEnabled(true);
     }//FIN VENDER POKEMON
+    
+    private ImageIcon ajustarTamañoImagen(String rutaImagen, int ancho, int alto) {
+        ImageIcon imagen = new ImageIcon(getClass().getClassLoader().getResource(rutaImagen));
+        Image imagenOriginal = imagen.getImage();
+        Image imagenAjustada = imagenOriginal.getScaledInstance(alto, ancho, Image.SCALE_SMOOTH);
+        return new ImageIcon(imagenAjustada);
+    }//FIN AJUSTAR TAMAÑO IMAGEN
+    
+    
+    
 }//FIN CLASS

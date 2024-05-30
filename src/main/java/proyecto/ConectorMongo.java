@@ -25,7 +25,8 @@ public class ConectorMongo {
              .applyConnectionString(new ConnectionString(connectionString))
              .serverApi(serverApi)
              .build();
-     
+    
+	
 	public ConectorMongo() {
 
 
@@ -40,8 +41,8 @@ public class ConectorMongo {
                  
                  
                  //DELETE                
-                 coleccionPokemons.deleteOne(Filters.eq("name", "Golderos"));
-                 System.out.println("Pokemon eliminado");
+                 //coleccionPokemons.deleteOne(Filters.eq("name", "Golderos"));
+                 //System.out.println("Pokemon eliminado");
                          
                  Document foundPokemon1 = coleccionPokemons.find(Filters.eq("name", "Golderos")).first();
                  if (foundPokemon1 != null) {
@@ -56,7 +57,6 @@ public class ConectorMongo {
         }
     }
     public static void añadirPokemon(){
-   
    
         String connectionString = "mongodb+srv://enriquemartinalbodo:enrique050505@cluster1.6qj4ajz.mongodb.net/?retryWrites=true&w=majority&appName=Cluster1";
 
@@ -105,5 +105,9 @@ public class ConectorMongo {
     	return foundPokemon;
     	
     }//FIN BUSCAR INFO POKEMON
+    
+    public void obtenerNombresUsuarios(){
+    	
+    }
     
 }//FIN CLASS
