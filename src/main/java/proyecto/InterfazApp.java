@@ -8,6 +8,7 @@ import org.bson.Document;
 import com.mongodb.client.MongoClient;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -30,7 +31,8 @@ public class InterfazApp extends JFrame {
     private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private Document pokemonInfo = null;
-    static JLabel lblCantidadMonedas = new JLabel("");
+    private Document usuario = null;
+    static JLabel lblCantidadMonedas = new JLabel();
     static JLabel lblText_InformacionGeneral = new JLabel("Información General");
     static JLabel lblMostrarNombre = new JLabel();
     static JLabel lblMostrarNumero = new JLabel();
@@ -104,7 +106,7 @@ public class InterfazApp extends JFrame {
         panelSeleccionPokemons.setLayout(null);
         
         JButton btnPokemon1 = new JButton();
-        btnPokemon1.setBackground(new Color(128, 128, 255));
+        btnPokemon1.setBackground(new Color(220, 20, 60));
         btnPokemon1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
@@ -117,7 +119,7 @@ public class InterfazApp extends JFrame {
         panelSeleccionPokemons.add(btnPokemon1);
         
         JButton btnPokemon2 = new JButton();
-        btnPokemon2.setBackground(new Color(0, 128, 255));
+        btnPokemon2.setBackground(new Color(51, 204, 255));
         btnPokemon2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
@@ -129,7 +131,7 @@ public class InterfazApp extends JFrame {
         btnPokemon2.setBounds(57, 213, 213, 38);
         panelSeleccionPokemons.add(btnPokemon2);
       
-        JButton btnPokemon3 = new JButton("New button");
+        JButton btnPokemon3 = new JButton();
         btnPokemon3.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
@@ -137,7 +139,7 @@ public class InterfazApp extends JFrame {
         		updateLabels(infoPokemon);
         	}
         });
-        btnPokemon3.setBackground(new Color(128, 255, 0));
+        btnPokemon3.setBackground(new Color(0, 123, 167));
         btnPokemon3.setFont(new Font("Tahoma", Font.BOLD, 22));
         btnPokemon3.setBounds(57, 380, 213, 38);
         panelSeleccionPokemons.add(btnPokemon3);
@@ -153,6 +155,33 @@ public class InterfazApp extends JFrame {
         Document infoPokemon3 = nuevoConector.mostrarInfo("Lucario");
         btnPokemon3.setText(infoPokemon3.getString("nombre") + " - " + infoPokemon3.getString("precio") + "€");
         
+        //CHECKBOX PARA COMPROBAR SI EL USUARIO TIENE O NO AL POKEMON
+        JCheckBox chckbx_Pokemon1 = new JCheckBox("");
+        chckbx_Pokemon1.setEnabled(false);
+        chckbx_Pokemon1.setSelected(false);
+        chckbx_Pokemon1.setHorizontalAlignment(SwingConstants.CENTER);
+        chckbx_Pokemon1.setBackground(new Color(255, 255, 255));
+        chckbx_Pokemon1.setBounds(6, 57, 45, 38);
+        panelSeleccionPokemons.add(chckbx_Pokemon1);
+        
+        JCheckBox chckbx_Pokemon2 = new JCheckBox("");
+        chckbx_Pokemon2.setEnabled(false);
+        chckbx_Pokemon2.setSelected(false);
+        chckbx_Pokemon2.setHorizontalAlignment(SwingConstants.CENTER);
+        chckbx_Pokemon2.setBackground(Color.WHITE);
+        chckbx_Pokemon2.setBounds(6, 213, 45, 38);
+        panelSeleccionPokemons.add(chckbx_Pokemon2);
+        
+        JCheckBox chckbx_Pokemon3 = new JCheckBox("");
+        chckbx_Pokemon3.setEnabled(false);
+        chckbx_Pokemon3.setSelected(false);
+        chckbx_Pokemon3.setFont(new Font("Tahoma", Font.PLAIN, 10));
+        chckbx_Pokemon3.setHorizontalAlignment(SwingConstants.CENTER);
+        chckbx_Pokemon3.setBackground(new Color(255, 255, 255));
+        chckbx_Pokemon3.setBounds(6, 380, 45, 38);
+        panelSeleccionPokemons.add(chckbx_Pokemon3);
+        
+        
         //BOTONES COMPRAR Y VENDER PRIMER POKEMON
         JButton btnComprarPokemon1 = new JButton("Comprar");
         btnComprarPokemon1.setBounds(340, 20, 138, 38);
@@ -160,6 +189,7 @@ public class InterfazApp extends JFrame {
         btnComprarPokemon1.setBackground(new Color(0, 255, 128));
         btnComprarPokemon1.setForeground(new Color(0, 0, 0));
         btnComprarPokemon1.setFont(new Font("Tahoma", Font.BOLD, 22));
+        btnComprarPokemon1.setEnabled(false);
         
         JButton btnVenderPokemon1 = new JButton("Vender");
         btnVenderPokemon1.setBounds(340, 93, 138, 38);
@@ -172,13 +202,13 @@ public class InterfazApp extends JFrame {
         //ACCIONES PARA BOTONES DEL POKEMON 1
         btnComprarPokemon1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                comprarPokemon(infoPokemon1.getString("nombre"), btnVenderPokemon1, btnComprarPokemon1);
+                comprarPokemon(infoPokemon1.getString("nombre"), btnVenderPokemon1, btnComprarPokemon1, chckbx_Pokemon1);
             }
         });
 
         btnVenderPokemon1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                venderPokemon(infoPokemon1.getString("nombre"), btnVenderPokemon1, btnComprarPokemon1);
+                venderPokemon(infoPokemon1.getString("nombre"), btnVenderPokemon1, btnComprarPokemon1, chckbx_Pokemon1);
             }
         });
         
@@ -188,6 +218,7 @@ public class InterfazApp extends JFrame {
         btnComprarPokemon2.setFont(new Font("Tahoma", Font.BOLD, 22));
         btnComprarPokemon2.setBackground(new Color(0, 255, 128));
         btnComprarPokemon2.setBounds(340, 179, 138, 38);
+        btnComprarPokemon2.setEnabled(false);
         panelSeleccionPokemons.add(btnComprarPokemon2);
         
         JButton btnVenderPokemon2 = new JButton("Vender");
@@ -202,13 +233,13 @@ public class InterfazApp extends JFrame {
         //ACCIONES PARA BOTONES DEL POKEMON 2
         btnComprarPokemon2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                comprarPokemon(infoPokemon2.getString("nombre"), btnVenderPokemon2, btnComprarPokemon2);
+                comprarPokemon(infoPokemon2.getString("nombre"), btnVenderPokemon2, btnComprarPokemon2, chckbx_Pokemon2);
             }
         });
 
         btnVenderPokemon2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                venderPokemon(infoPokemon2.getString("nombre"), btnVenderPokemon2, btnComprarPokemon2);
+                venderPokemon(infoPokemon2.getString("nombre"), btnVenderPokemon2, btnComprarPokemon2, chckbx_Pokemon2);
             }
         });
         
@@ -218,6 +249,7 @@ public class InterfazApp extends JFrame {
         btnComprarPokemon3.setFont(new Font("Tahoma", Font.BOLD, 22));
         btnComprarPokemon3.setBackground(new Color(0, 255, 128));
         btnComprarPokemon3.setBounds(340, 340, 138, 38);
+        btnComprarPokemon3.setEnabled(false);
         panelSeleccionPokemons.add(btnComprarPokemon3);
         
         JButton btnVenderPokemon3 = new JButton("Vender");
@@ -227,39 +259,17 @@ public class InterfazApp extends JFrame {
         btnVenderPokemon3.setBounds(340, 411, 138, 38);
         panelSeleccionPokemons.add(btnVenderPokemon3);
         btnVenderPokemon3.setEnabled(false); 
-        
-        JCheckBox chckbxNewCheckBox_Pokemon1 = new JCheckBox("");
-        chckbxNewCheckBox_Pokemon1.setEnabled(false);
-        chckbxNewCheckBox_Pokemon1.setHorizontalAlignment(SwingConstants.CENTER);
-        chckbxNewCheckBox_Pokemon1.setBackground(new Color(255, 255, 255));
-        chckbxNewCheckBox_Pokemon1.setBounds(6, 57, 45, 38);
-        panelSeleccionPokemons.add(chckbxNewCheckBox_Pokemon1);
-        
-        JCheckBox chckbxNewCheckBox_Pokemon2 = new JCheckBox("");
-        chckbxNewCheckBox_Pokemon2.setEnabled(false);
-        chckbxNewCheckBox_Pokemon2.setHorizontalAlignment(SwingConstants.CENTER);
-        chckbxNewCheckBox_Pokemon2.setBackground(Color.WHITE);
-        chckbxNewCheckBox_Pokemon2.setBounds(6, 213, 45, 38);
-        panelSeleccionPokemons.add(chckbxNewCheckBox_Pokemon2);
-        
-        JCheckBox chckbxNewCheckBox_Pokemon3 = new JCheckBox("");
-        chckbxNewCheckBox_Pokemon3.setEnabled(false);
-        chckbxNewCheckBox_Pokemon3.setFont(new Font("Tahoma", Font.PLAIN, 10));
-        chckbxNewCheckBox_Pokemon3.setHorizontalAlignment(SwingConstants.CENTER);
-        chckbxNewCheckBox_Pokemon3.setBackground(new Color(255, 255, 255));
-        chckbxNewCheckBox_Pokemon3.setBounds(6, 380, 45, 38);
-        panelSeleccionPokemons.add(chckbxNewCheckBox_Pokemon3);
-        
+    
         //ACCIONES PARA BOTONES DEL POKEMON 3
         btnComprarPokemon3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                comprarPokemon(infoPokemon3.getString("nombre"), btnVenderPokemon3, btnComprarPokemon3);
+                comprarPokemon(infoPokemon3.getString("nombre"), btnVenderPokemon3, btnComprarPokemon3, chckbx_Pokemon3);
             }
         });
 
         btnVenderPokemon3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                venderPokemon(infoPokemon3.getString("nombre"), btnVenderPokemon3, btnComprarPokemon3);
+                venderPokemon(infoPokemon3.getString("nombre"), btnVenderPokemon3, btnComprarPokemon3, chckbx_Pokemon3);
             }
         });
         
@@ -413,13 +423,13 @@ public class InterfazApp extends JFrame {
         lblText_Estadisticas.setForeground(new Color(255, 0, 128));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
         lblText_Estadisticas.setBounds(200, 216, 187, 32);
-        panel.add(lblText_Estadisticas);
         lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
+        panel.add(lblText_Estadisticas);
         
         lblIMG_Personaje.setFont(new Font("Bell MT", Font.BOLD | Font.ITALIC, 20));
         lblIMG_Personaje.setHorizontalAlignment(SwingConstants.LEFT);
         lblIMG_Personaje.setIcon((new ImageIcon(getClass().getClassLoader().getResource(("img/personaje.png")))));
-        lblIMG_Personaje.setBounds(10, 10, 861, 150);
+        lblIMG_Personaje.setBounds(10, 10, 733, 150);
         contentPane.add(lblIMG_Personaje);
         
         lblImgMonedas.setIcon(new ImageIcon(getClass().getClassLoader().getResource(("img/monedas.jpg"))));
@@ -441,20 +451,36 @@ public class InterfazApp extends JFrame {
         
         //USUARIOS: COMBOBOX Y BOTON
         JComboBox comboBox_Usuario = new JComboBox();
-        comboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 14));
+        comboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 16));
         comboBox_Usuario.setModel(new DefaultComboBoxModel(new String[] {"Seleccionar Usuario"}));
         comboBox_Usuario.setToolTipText("");
-        comboBox_Usuario.setBounds(82, 154, 177, 40);
+        comboBox_Usuario.setBounds(97, 153, 182, 40);
         contentPane.add(comboBox_Usuario);
-        comboBox_Usuario.addItem("Ismael");
-        comboBox_Usuario.addItem("Ruben");
-        comboBox_Usuario.addItem("Enrique");
-        comboBox_Usuario.addItem("Luis");
+        rellenarComboBox(comboBox_Usuario);
         
         JButton btnUsuario = new JButton("Actualizar Usuario");
         btnUsuario.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		
+        		String usuarioSeleccionado = (String) comboBox_Usuario.getSelectedItem();
+        		if(!usuarioSeleccionado.equals("Seleccionar Usuario")) {
+        			ConectorMongo nuevoConectorMongo = new ConectorMongo();
+        			nuevoConectorMongo.obtenerInfoUsuario(usuarioSeleccionado, lblCantidadMonedas);
+        			resetearBotones(btnComprarPokemon1, btnComprarPokemon2, btnComprarPokemon3, btnVenderPokemon1, btnVenderPokemon2, btnVenderPokemon3);
+        			resetearCheckBox(chckbx_Pokemon1, chckbx_Pokemon2, chckbx_Pokemon3);
+        			btnComprarPokemon1.setEnabled(true);
+        			btnComprarPokemon2.setEnabled(true);
+        			btnComprarPokemon3.setEnabled(true);
+        			lblMensajeAlUsuario.setText("");
+        			lblMensajeAlUsuario.setBackground(new Color(255, 255, 255));
+        		}else {
+        			lblMensajeAlUsuario.setText("No has seleccionado ningun usuario valido");
+        			lblMensajeAlUsuario.setBackground(new Color(255, 204, 133));
+        	        lblMensajeAlUsuario.setOpaque(true);
+        	        lblCantidadMonedas.setText("0");
+        	        btnComprarPokemon1.setEnabled(false);
+        			btnComprarPokemon2.setEnabled(false);
+        			btnComprarPokemon3.setEnabled(false);
+        		}
         	}
         });
         btnUsuario.setForeground(new Color(0, 0, 255));
@@ -494,7 +520,7 @@ public class InterfazApp extends JFrame {
     	lblMostrarPeso.setText(infoPokemon.getString("peso"));
     }//FIN UPDATE LABELS
 
-    private void comprarPokemon(String nombrePokemon, JButton btnVender, JButton btnComprar) {
+    private void comprarPokemon(String nombrePokemon, JButton btnVender, JButton btnComprar, JCheckBox checkBox) {
         ConectorMongo nuevoConector = new ConectorMongo();
         Document infoPokemon = nuevoConector.mostrarInfo(nombrePokemon);
         int precio = Integer.parseInt(infoPokemon.getString("precio"));
@@ -508,6 +534,11 @@ public class InterfazApp extends JFrame {
             lblMensajeAlUsuario.setOpaque(true);
             btnVender.setEnabled(true);
             btnComprar.setEnabled(false);
+            
+            boolean comprarPokemon = nuevoConector.actualizarCheckBox(nombrePokemon);
+            if(comprarPokemon) {
+            	checkBox.setSelected(true);
+            }
         }else{
         	lblMensajeAlUsuario.setText("No tienes monedas para comprar a " + nombrePokemon);
         	lblMensajeAlUsuario.setBackground(new Color(189, 195, 199));
@@ -515,7 +546,7 @@ public class InterfazApp extends JFrame {
         }
     }//FIN COMPRAR POKEMON
 
-    private void venderPokemon(String nombrePokemon, JButton btnVender, JButton btnComprar) {
+    private void venderPokemon(String nombrePokemon, JButton btnVender, JButton btnComprar, JCheckBox checkBox) {
         ConectorMongo nuevoConector = new ConectorMongo();
         Document infoPokemon = nuevoConector.mostrarInfo(nombrePokemon);
         int precio = Integer.parseInt(infoPokemon.getString("precio"));
@@ -528,6 +559,11 @@ public class InterfazApp extends JFrame {
         lblMensajeAlUsuario.setOpaque(true);
         btnVender.setEnabled(false);
         btnComprar.setEnabled(true);
+        
+        boolean comprarPokemon = nuevoConector.actualizarCheckBox(nombrePokemon);
+        if(comprarPokemon) {
+        	checkBox.setSelected(false);
+        }
     }//FIN VENDER POKEMON
     
     private ImageIcon ajustarTamañoImagen(String rutaImagen, int ancho, int alto) {
@@ -537,5 +573,28 @@ public class InterfazApp extends JFrame {
         return new ImageIcon(imagenAjustada);
     }//FIN AJUSTAR TAMAÑO IMAGEN
     
+    private void rellenarComboBox(JComboBox comboBox_Usuario) {
+    	ConectorMongo nuevoConector = new ConectorMongo();
+    	ArrayList<String> nombres = nuevoConector.obtenerNombresUsuarios();
+    	
+    	for(int i=0; i<nombres.size(); i++) {
+    		comboBox_Usuario.addItem(nombres.get(i));
+    	}
+    }//FIN RELLENAR COMBOBOX
+    
+    private void resetearBotones(JButton btnComprarPokemon1, JButton btnComprarPokemon2, JButton btnComprarPokemon3, JButton btnVenderPokemon1, JButton btnVenderPokemon2, JButton btnVenderPokemon3) {
+    	btnComprarPokemon1.setEnabled(false);
+    	btnComprarPokemon2.setEnabled(false);
+    	btnComprarPokemon3.setEnabled(false);
+    	btnVenderPokemon1.setEnabled(false);
+    	btnVenderPokemon2.setEnabled(false);
+    	btnVenderPokemon3.setEnabled(false);
+    }//FIN RESETEAR BOTONES
+    
+    private void resetearCheckBox(JCheckBox chckbx_Pokemon1, JCheckBox chckbx_Pokemon2, JCheckBox chckbx_Pokemon3) {
+    	chckbx_Pokemon1.setSelected(false);
+    	chckbx_Pokemon2.setSelected(false);
+    	chckbx_Pokemon3.setSelected(false);
+    }//FIN RESETEAR CHECK BOX
     
 }//FIN CLASS
