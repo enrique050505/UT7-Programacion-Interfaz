@@ -446,6 +446,10 @@ public class InterfazApp extends JFrame {
         comboBox_Usuario.setToolTipText("");
         comboBox_Usuario.setBounds(82, 154, 177, 40);
         contentPane.add(comboBox_Usuario);
+        comboBox_Usuario.addItem("Ismael");
+        comboBox_Usuario.addItem("Ruben");
+        comboBox_Usuario.addItem("Enrique");
+        comboBox_Usuario.addItem("Luis");
         
         JButton btnUsuario = new JButton("Actualizar Usuario");
         btnUsuario.addActionListener(new ActionListener() {
@@ -532,7 +536,6 @@ public class InterfazApp extends JFrame {
         Image imagenAjustada = imagenOriginal.getScaledInstance(alto, ancho, Image.SCALE_SMOOTH);
         return new ImageIcon(imagenAjustada);
     }//FIN AJUSTAR TAMAÑO IMAGEN
-    
     
     
 }//FIN CLASS

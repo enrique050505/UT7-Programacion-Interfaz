@@ -12,6 +12,8 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.Filters;
 
+import java.util.ArrayList;
+
 import org.bson.Document;
 
 public class ConectorMongo {
@@ -106,8 +108,13 @@ public class ConectorMongo {
     	
     }//FIN BUSCAR INFO POKEMON
     
-    public void obtenerNombresUsuarios(){
-    	
-    }
+   /*public ArrayList obtenerNombresUsuarios(){
+    	ArrayList<Document>nombres=new ArrayList<Document>();
+    	nombres.add("Luis");
+    	nombres.add("Luis");
+    	nombres.add("Luis");
+    	nombres.add("Luis");
+		return nombres;
+    }*/
     
 }//FIN CLASS
