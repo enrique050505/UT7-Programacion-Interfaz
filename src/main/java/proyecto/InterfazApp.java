@@ -476,6 +476,7 @@ public class InterfazApp extends JFrame {
         			lblMensajeAlUsuario.setBackground(new Color(255, 255, 255));
         		}else{
         			resetearBotones(btnComprarPokemon1, btnComprarPokemon2, btnComprarPokemon3, btnVenderPokemon1, btnVenderPokemon2, btnVenderPokemon3);
+        			resetearCheckBox(chckbx_Pokemon1, chckbx_Pokemon2, chckbx_Pokemon3);
         			lblMensajeAlUsuario.setText("No has seleccionado ningun usuario valido");
         			lblMensajeAlUsuario.setBackground(new Color(255, 255, 0));
         			lblMensajeAlUsuario.setForeground(new Color(0, 0, 0));
