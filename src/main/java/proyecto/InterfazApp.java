@@ -432,7 +432,7 @@ public class InterfazApp extends JFrame {
         lblIMG_Personaje.setFont(new Font("Bell MT", Font.BOLD | Font.ITALIC, 20));
         lblIMG_Personaje.setHorizontalAlignment(SwingConstants.LEFT);
         lblIMG_Personaje.setIcon((new ImageIcon(getClass().getClassLoader().getResource(("img/personaje.png")))));
-        lblIMG_Personaje.setBounds(21, 24, 733, 150);
+        lblIMG_Personaje.setBounds(10, 10, 733, 150);
         contentPane.add(lblIMG_Personaje);
         
         lblImgMonedas.setIcon(new ImageIcon(getClass().getClassLoader().getResource(("img/monedas.jpg"))));
@@ -456,7 +456,7 @@ public class InterfazApp extends JFrame {
         comboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 18));
         comboBox_Usuario.setModel(new DefaultComboBoxModel(new String[] {"Seleccionar Usuario"}));
         comboBox_Usuario.setToolTipText("");
-        comboBox_Usuario.setBounds(52, 170, 215, 40);
+        comboBox_Usuario.setBounds(52, 173, 215, 40);
         contentPane.add(comboBox_Usuario);
         rellenarComboBox(comboBox_Usuario);
         
