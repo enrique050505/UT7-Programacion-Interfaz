@@ -285,7 +285,7 @@ public class InterfazApp extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.WHITE);
-        panel.setBounds(754, 299, 643, 490);
+        panel.setBounds(720, 299, 644, 490);
         contentPane.add(panel);
         panel.setLayout(null);
         
@@ -547,6 +547,7 @@ public class InterfazApp extends JFrame {
         }else{
         	lblMensajeAlUsuario.setText("No tienes monedas para comprar a " + nombrePokemon);
         	lblMensajeAlUsuario.setBackground(new Color(189, 195, 199));
+        	lblMensajeAlUsuario.setForeground(new Color(0, 0, 0));
         	lblMensajeAlUsuario.setOpaque(true);
         }
     }//FIN COMPRAR POKEMON

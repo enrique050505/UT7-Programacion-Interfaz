@@ -141,7 +141,7 @@ public class ConectorMongo {
     }//FIN OBTENER INFORMACION USUARIOS
 
     public boolean actualizarCheckBox(String nombrePokemon) {
-    	boolean pokemonComprado=false;
+    	boolean obtenido=false;
     	try (MongoClient mongoClient = MongoClients.create(settings)) {
             try {
          	   	MongoDatabase database = mongoClient.getDatabase("ProyectoUT7");
@@ -149,13 +149,15 @@ public class ConectorMongo {
           
                 coleccionPokemons.updateOne(Filters.eq("nombre", nombrePokemon), Updates.set("PokemonComprado", true));
                 
-                pokemonComprado=true;
+                obtenido=true;
             } catch (MongoException e) {
                 e.printStackTrace();
             }
             
         }
-		return pokemonComprado;
+		return obtenido;
     }//FIN ACTUALIZAR CHECK BOX
+    
+    
     
 }//FIN CLASS
