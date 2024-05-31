@@ -423,7 +423,7 @@ public class InterfazApp extends JFrame {
         lblMostrarPeso.setBounds(541, 436, 44, 41);
         panel.add(lblMostrarPeso);
         
-        lblText_Estadisticas.setForeground(new Color(0, 0, 128));
+        lblText_Estadisticas.setForeground(new Color(255, 0, 128));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
         lblText_Estadisticas.setBounds(194, 216, 187, 32);
         lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
@@ -474,6 +474,7 @@ public class InterfazApp extends JFrame {
         			lblMensajeAlUsuario.setText("");
         			lblMensajeAlUsuario.setBackground(new Color(255, 255, 255));
         		}else{
+        			resetearBotones(btnComprarPokemon1, btnComprarPokemon2, btnComprarPokemon3, btnVenderPokemon1, btnVenderPokemon2, btnVenderPokemon3);
         			lblMensajeAlUsuario.setText("No has seleccionado ningun usuario valido");
         			lblMensajeAlUsuario.setBackground(new Color(255, 255, 0));
         			lblMensajeAlUsuario.setForeground(new Color(0, 0, 0));
