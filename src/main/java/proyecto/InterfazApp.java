@@ -444,6 +444,7 @@ public class InterfazApp extends JFrame {
         lblText_InformacionGeneral.setFont(new Font("Tahoma", Font.BOLD, 30));
         lblText_InformacionGeneral.setBounds(923, 249, 327, 40);
         contentPane.add(lblText_InformacionGeneral);
+        lblMensajeAlUsuario.setBackground(new Color(255, 255, 255));
        
         lblMensajeAlUsuario.setFont(new Font("Verdana", Font.PLAIN, 20));
         lblMensajeAlUsuario.setHorizontalAlignment(SwingConstants.CENTER);
@@ -559,6 +560,7 @@ public class InterfazApp extends JFrame {
         lblCantidadMonedas.setText(String.valueOf(monedas));
         lblMensajeAlUsuario.setText("Has vendido a " + nombrePokemon);
         lblMensajeAlUsuario.setBackground(new Color(155, 89, 182));
+        lblMensajeAlUsuario.setForeground(new Color(255, 255, 255));
         lblMensajeAlUsuario.setOpaque(true);
         btnVender.setEnabled(false);
         btnComprar.setEnabled(true);
