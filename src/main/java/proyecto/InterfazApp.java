@@ -106,7 +106,8 @@ public class InterfazApp extends JFrame {
         panelSeleccionPokemons.setLayout(null);
         
         JButton btnPokemon1 = new JButton();
-        btnPokemon1.setBackground(new Color(220, 20, 60));
+        btnPokemon1.setBackground(new Color(255, 165, 0));
+        btnPokemon1.setForeground(new Color(128, 0, 128));
         btnPokemon1.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
@@ -119,7 +120,8 @@ public class InterfazApp extends JFrame {
         panelSeleccionPokemons.add(btnPokemon1);
         
         JButton btnPokemon2 = new JButton();
-        btnPokemon2.setBackground(new Color(51, 204, 255));
+        btnPokemon2.setBackground(new Color(102, 204, 255));
+        btnPokemon2.setForeground(new Color(0, 0, 0));
         btnPokemon2.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
@@ -132,6 +134,7 @@ public class InterfazApp extends JFrame {
         panelSeleccionPokemons.add(btnPokemon2);
       
         JButton btnPokemon3 = new JButton();
+        btnPokemon3.setForeground(new Color(225, 215, 0));
         btnPokemon3.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		ConectorMongo nuevoConector = new ConectorMongo();
@@ -139,7 +142,7 @@ public class InterfazApp extends JFrame {
         		updateLabels(infoPokemon);
         	}
         });
-        btnPokemon3.setBackground(new Color(0, 123, 167));
+        btnPokemon3.setBackground(new Color(30, 144, 255));
         btnPokemon3.setFont(new Font("Tahoma", Font.BOLD, 22));
         btnPokemon3.setBounds(57, 380, 213, 38);
         panelSeleccionPokemons.add(btnPokemon3);
@@ -282,7 +285,7 @@ public class InterfazApp extends JFrame {
 
         JPanel panel = new JPanel();
         panel.setBackground(Color.WHITE);
-        panel.setBounds(727, 299, 643, 490);
+        panel.setBounds(754, 299, 643, 490);
         contentPane.add(panel);
         panel.setLayout(null);
         
@@ -325,9 +328,9 @@ public class InterfazApp extends JFrame {
         lblTipo2.setBounds(531, 79, 102, 26);
         panel.add(lblTipo2);
         
-        textAreaDescripcion.setForeground(new Color(255, 255, 255));
-        textAreaDescripcion.setBackground(new Color(0, 0, 0));
-        textAreaDescripcion.setFont(new Font("Verdana", Font.PLAIN, 14));
+        textAreaDescripcion.setForeground(new Color(128, 0, 128));
+        textAreaDescripcion.setBackground(new Color(255, 255, 255));
+        textAreaDescripcion.setFont(new Font("Arial", Font.BOLD, 16));
         textAreaDescripcion.setEditable(false); 
         textAreaDescripcion.setLineWrap(true); 
         textAreaDescripcion.setWrapStyleWord(true);
@@ -420,16 +423,16 @@ public class InterfazApp extends JFrame {
         lblMostrarPeso.setBounds(541, 436, 44, 41);
         panel.add(lblMostrarPeso);
         
-        lblText_Estadisticas.setForeground(new Color(255, 0, 128));
+        lblText_Estadisticas.setForeground(new Color(0, 0, 128));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
-        lblText_Estadisticas.setBounds(200, 216, 187, 32);
+        lblText_Estadisticas.setBounds(194, 216, 187, 32);
         lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
         panel.add(lblText_Estadisticas);
         
         lblIMG_Personaje.setFont(new Font("Bell MT", Font.BOLD | Font.ITALIC, 20));
         lblIMG_Personaje.setHorizontalAlignment(SwingConstants.LEFT);
         lblIMG_Personaje.setIcon((new ImageIcon(getClass().getClassLoader().getResource(("img/personaje.png")))));
-        lblIMG_Personaje.setBounds(10, 10, 733, 150);
+        lblIMG_Personaje.setBounds(21, 24, 733, 150);
         contentPane.add(lblIMG_Personaje);
         
         lblImgMonedas.setIcon(new ImageIcon(getClass().getClassLoader().getResource(("img/monedas.jpg"))));
@@ -441,27 +444,25 @@ public class InterfazApp extends JFrame {
         lblText_InformacionGeneral.setFont(new Font("Tahoma", Font.BOLD, 30));
         lblText_InformacionGeneral.setBounds(923, 249, 327, 40);
         contentPane.add(lblText_InformacionGeneral);
-        
-        lblMensajeAlUsuario.setBackground(new Color(255, 255, 128));
-        lblMensajeAlUsuario.setForeground(new Color(255, 255, 255));
-        lblMensajeAlUsuario.setFont(new Font("Comic Sans MS", Font.PLAIN, 18));
+       
+        lblMensajeAlUsuario.setFont(new Font("Verdana", Font.PLAIN, 20));
         lblMensajeAlUsuario.setHorizontalAlignment(SwingConstants.CENTER);
-        lblMensajeAlUsuario.setBounds(441, 229, 405, 41);
+        lblMensajeAlUsuario.setBounds(362, 228, 468, 41);
         contentPane.add(lblMensajeAlUsuario);
         
         //USUARIOS: COMBOBOX Y BOTON
         JComboBox comboBox_Usuario = new JComboBox();
-        comboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 16));
+        comboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 18));
         comboBox_Usuario.setModel(new DefaultComboBoxModel(new String[] {"Seleccionar Usuario"}));
         comboBox_Usuario.setToolTipText("");
-        comboBox_Usuario.setBounds(97, 153, 182, 40);
+        comboBox_Usuario.setBounds(52, 170, 215, 40);
         contentPane.add(comboBox_Usuario);
         rellenarComboBox(comboBox_Usuario);
         
         JButton btnUsuario = new JButton("Actualizar Usuario");
         btnUsuario.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		String usuarioSeleccionado = (String) comboBox_Usuario.getSelectedItem();
+        		String usuarioSeleccionado =  (String) comboBox_Usuario.getSelectedItem();
         		if(!usuarioSeleccionado.equals("Seleccionar Usuario")) {
         			ConectorMongo nuevoConectorMongo = new ConectorMongo();
         			nuevoConectorMongo.obtenerInfoUsuario(usuarioSeleccionado, lblCantidadMonedas);
@@ -472,9 +473,10 @@ public class InterfazApp extends JFrame {
         			btnComprarPokemon3.setEnabled(true);
         			lblMensajeAlUsuario.setText("");
         			lblMensajeAlUsuario.setBackground(new Color(255, 255, 255));
-        		}else {
+        		}else{
         			lblMensajeAlUsuario.setText("No has seleccionado ningun usuario valido");
-        			lblMensajeAlUsuario.setBackground(new Color(255, 204, 133));
+        			lblMensajeAlUsuario.setBackground(new Color(255, 255, 0));
+        			lblMensajeAlUsuario.setForeground(new Color(0, 0, 0));
         	        lblMensajeAlUsuario.setOpaque(true);
         	        lblCantidadMonedas.setText("0");
         	        btnComprarPokemon1.setEnabled(false);
@@ -484,11 +486,11 @@ public class InterfazApp extends JFrame {
         	}
         });
         btnUsuario.setForeground(new Color(0, 0, 255));
-        btnUsuario.setFont(new Font("Verdana", Font.BOLD, 20));
-        btnUsuario.setBounds(308, 151, 250, 41);
+        btnUsuario.setFont(new Font("Verdana", Font.BOLD, 22));
+        btnUsuario.setBounds(277, 170, 280, 41);
         contentPane.add(btnUsuario);
 
-        lblIMG_Pokemon.setBounds(795, 24, 588, 215);
+        lblIMG_Pokemon.setBounds(795, 24, 588, 199);
         contentPane.add(lblIMG_Pokemon);
         lblIMG_Pokemon.setIcon(new ImageIcon(getClass().getClassLoader().getResource(("img/Pokemon-Logo.jpg"))));
         
