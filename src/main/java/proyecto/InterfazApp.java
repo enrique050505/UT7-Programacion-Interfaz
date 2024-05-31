@@ -337,7 +337,7 @@ public class InterfazApp extends JFrame {
         textAreaDescripcion.setEditable(false); 
         textAreaDescripcion.setLineWrap(true); 
         textAreaDescripcion.setWrapStyleWord(true);
-        textAreaDescripcion.setBounds(225, 54, 187, 140);
+        textAreaDescripcion.setBounds(225, 54, 176, 152);
         panel_InformacionGeneral.add(textAreaDescripcion);
         
         lbPS.setHorizontalAlignment(SwingConstants.LEFT);
@@ -422,10 +422,11 @@ public class InterfazApp extends JFrame {
         
         lblText_Estadisticas.setForeground(new Color(0, 128, 0));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
-        lblText_Estadisticas.setBounds(215, 228, 176, 26);
+        lblText_Estadisticas.setBounds(215, 223, 176, 26);
         lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
         panel_InformacionGeneral.add(lblText_Estadisticas);
         
+        lblDebilidades.setForeground(new Color(255, 15, 15));
         lblDebilidades.setFont(new Font("Arial", Font.BOLD, 20));
         lblDebilidades.setHorizontalAlignment(SwingConstants.CENTER);
         lblDebilidades.setBounds(459, 108, 126, 22);
