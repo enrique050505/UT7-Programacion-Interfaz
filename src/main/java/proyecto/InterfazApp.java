@@ -422,7 +422,7 @@ public class InterfazApp extends JFrame {
         
         lblText_Estadisticas.setForeground(new Color(0, 128, 0));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
-        lblText_Estadisticas.setBounds(193, 226, 187, 26);
+        lblText_Estadisticas.setBounds(215, 228, 176, 26);
         lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
         panel_InformacionGeneral.add(lblText_Estadisticas);
         
