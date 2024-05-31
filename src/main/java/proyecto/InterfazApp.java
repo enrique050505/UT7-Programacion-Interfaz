@@ -276,7 +276,7 @@ public class InterfazApp extends JFrame {
             }
         });
         
-        JLabel lblPokedex = new JLabel("PÓKEDEX");
+        JLabel lblPokedex = new JLabel("POKÉDEX");
         lblPokedex.setForeground(new Color(0, 64, 128));
         lblPokedex.setHorizontalAlignment(SwingConstants.CENTER);
         lblPokedex.setFont(new Font("Tahoma", Font.BOLD, 30));
