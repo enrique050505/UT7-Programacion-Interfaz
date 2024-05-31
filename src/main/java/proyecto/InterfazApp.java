@@ -420,7 +420,7 @@ public class InterfazApp extends JFrame {
         lblMostrarPeso.setBounds(541, 436, 44, 41);
         panel_InformacionGeneral.add(lblMostrarPeso);
         
-        lblText_Estadisticas.setForeground(new Color(255, 0, 128));
+        lblText_Estadisticas.setForeground(new Color(0, 128, 0));
         lblText_Estadisticas.setHorizontalAlignment(SwingConstants.CENTER);
         lblText_Estadisticas.setBounds(193, 226, 187, 26);
         lblText_Estadisticas.setFont(new Font("Verdana", Font.BOLD, 24));
