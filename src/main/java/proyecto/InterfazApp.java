@@ -639,4 +639,6 @@ public class InterfazApp extends JFrame {
     	chckbx_Pokemon2.setSelected(false);
     	chckbx_Pokemon3.setSelected(false);
     }//FIN RESETEAR CHECK BOX
+    
+    
 }//FIN CLASS
