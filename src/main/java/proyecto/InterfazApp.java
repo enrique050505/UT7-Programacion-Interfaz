@@ -542,9 +542,6 @@ public class InterfazApp extends JFrame {
     	ImageIcon imagen = ajustarTamañoImagen("img/" + infoPokemon.getString("nombre")+".png", lblImagenPokemon.getWidth(), lblImagenPokemon.getHeight());
     	lblImagenPokemon.setIcon(imagen);
     	lblTipo1.setText(infoPokemon.getString("primerTipo"));
-    	if(infoPokemon != null) {
-    		lblTipo2.setText(infoPokemon.getString("segundoTipo"));
-    	}
     	textAreaDescripcion.setText(infoPokemon.getString("descripcion"));
     	lblMostrarPS.setText(infoPokemon.getString("ps"));
     	lblMostrarAtaque.setText(infoPokemon.getString("ataque"));
@@ -556,6 +553,7 @@ public class InterfazApp extends JFrame {
     	lblMostrarPeso.setText(infoPokemon.getString("peso"));
     	lblDebilidad1.setText(infoPokemon.getString("debilidad1"));
     	if(infoPokemon != null) {
+    		lblTipo2.setText(infoPokemon.getString("segundoTipo"));
     		lblDebilidad2.setText(infoPokemon.getString("debilidad2"));
     		lblDebilidad3.setText(infoPokemon.getString("debilidad3"));
     	}
@@ -640,188 +638,5 @@ public class InterfazApp extends JFrame {
     	chckbx_Pokemon2.setSelected(false);
     	chckbx_Pokemon3.setSelected(false);
     }//FIN RESETEAR CHECK BOX
-
-    private void cambiarColores(JLabel lblTipo1,JLabel lblTipo2,JLabel lblDebilidad1,JLabel lblDebilidad2,JLabel lblDebilidad3) {
-    	//Tipo 1
-    	if(pokemonInfo.getString(lblTipo1).equals("Roca")) {
-    		lblTipo1.setBackground(new Color(100, 63, 3));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Acero")) {
-    		lblTipo1.setBackground(new Color(97, 106, 107 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Agua")) {
-    		lblTipo1.setBackground(new Color(22, 167, 155 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Bicho")) {
-    		lblTipo1.setBackground(new Color(56, 167, 22));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Dragon")) {
-    		lblTipo1.setBackground(new Color(249, 9, 9 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Eléctrico")) {
-    		lblTipo1.setBackground(new Color(226, 249, 9));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Fantasma")) {
-    		lblTipo1.setBackground(new Color(136, 78, 160));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Fuego")) {
-    		lblTipo1.setBackground(new Color(249, 9, 9));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Hada")) {
-    		lblTipo1.setBackground(new Color(121, 30, 163 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Hielo")) {
-    		lblTipo1.setBackground(new Color(34, 254, 240));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Lucha")) {
-    		lblTipo1.setBackground(new Color(211, 84, 0));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Normal")) {
-    		lblTipo1.setBackground(new Color(237, 187, 153 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Psiquico")) {
-    		lblTipo1.setBackground(new Color(210, 180, 222 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Siniestro")) {
-    		lblTipo1.setBackground(new Color(171, 178, 185  ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Tierra")) {
-    		lblTipo1.setBackground(new Color(120, 66, 18 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Veneno")) {
-    		lblTipo1.setBackground(new Color(118, 68, 138 ));
-    	}else if(pokemonInfo.getString(lblTipo1).equals("Volador")) {
-    		lblTipo1.setBackground(new Color(253, 254, 254 ));
-    	}
-    	//Tipo 2
-    	if(pokemonInfo.getString(lblTipo2).equals("Roca")) {
-    		lblTipo2.setBackground(new Color(100, 63, 3));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Acero")) {
-    		lblTipo2.setBackground(new Color(97, 106, 107 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Agua")) {
-    		lblTipo2.setBackground(new Color(22, 167, 155 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Bicho")) {
-    		lblTipo2.setBackground(new Color(56, 167, 22));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Dragon")) {
-    		lblTipo2.setBackground(new Color(249, 9, 9 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Eléctrico")) {
-    		lblTipo2.setBackground(new Color(226, 249, 9));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Fantasma")) {
-    		lblTipo2.setBackground(new Color(136, 78, 160));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Fuego")) {
-    		lblTipo2.setBackground(new Color(249, 9, 9));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Hada")) {
-    		lblTipo2.setBackground(new Color(121, 30, 163 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Hielo")) {
-    		lblTipo2.setBackground(new Color(34, 254, 240));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Lucha")) {
-    		lblTipo2.setBackground(new Color(211, 84, 0));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Normal")) {
-    		lblTipo2.setBackground(new Color(237, 187, 153 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Psiquico")) {
-    		lblTipo2.setBackground(new Color(210, 180, 222 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Siniestro")) {
-    		lblTipo2.setBackground(new Color(171, 178, 185  ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Tierra")) {
-    		lblTipo2.setBackground(new Color(120, 66, 18 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Veneno")) {
-    		lblTipo2.setBackground(new Color(118, 68, 138 ));
-    	}else if(pokemonInfo.getString(lblTipo2).equals("Volador")) {
-    		lblTipo2.setBackground(new Color(253, 254, 254 ));
-    	}
-    	//Debilidad1
-    	if(pokemonInfo.getString(lblDebilidad1).equals("Roca")) {
-    		lblDebilidad1.setBackground(new Color(100, 63, 3));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Acero")) {
-    		lblDebilidad1.setBackground(new Color(97, 106, 107 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Agua")) {
-    		lblDebilidad1.setBackground(new Color(22, 167, 155 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Bicho")) {
-    		lblDebilidad1.setBackground(new Color(56, 167, 22));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Dragon")) {
-    		lblDebilidad1.setBackground(new Color(249, 9, 9 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Eléctrico")) {
-    		lblDebilidad1.setBackground(new Color(226, 249, 9));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Fantasma")) {
-    		lblDebilidad1.setBackground(new Color(136, 78, 160));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Fuego")) {
-    		lblDebilidad1.setBackground(new Color(249, 9, 9));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Hada")) {
-    		lblDebilidad1.setBackground(new Color(121, 30, 163 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Hielo")) {
-    		lblDebilidad1.setBackground(new Color(34, 254, 240));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Lucha")) {
-    		lblDebilidad1.setBackground(new Color(211, 84, 0));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Normal")) {
-    		lblDebilidad1.setBackground(new Color(237, 187, 153 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Psiquico")) {
-    		lblDebilidad1.setBackground(new Color(210, 180, 222 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Siniestro")) {
-    		lblDebilidad1.setBackground(new Color(171, 178, 185  ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Tierra")) {
-    		lblDebilidad1.setBackground(new Color(120, 66, 18 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Veneno")) {
-    		lblDebilidad1.setBackground(new Color(118, 68, 138 ));
-    	}else if(pokemonInfo.getString(lblDebilidad1).equals("Volador")) {
-    		lblDebilidad1.setBackground(new Color(253, 254, 254 ));
-    	}
-    	//Debilidad 2
-    	if(pokemonInfo.getString(lblDebilidad2).equals("Roca")) {
-    		lblDebilidad2.setBackground(new Color(100, 63, 3));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Acero")) {
-    		lblDebilidad2.setBackground(new Color(97, 106, 107 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Agua")) {
-    		lblDebilidad2.setBackground(new Color(22, 167, 155 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Bicho")) {
-    		lblDebilidad2.setBackground(new Color(56, 167, 22));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Dragon")) {
-    		lblDebilidad2.setBackground(new Color(249, 9, 9 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Eléctrico")) {
-    		lblDebilidad2.setBackground(new Color(226, 249, 9));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Fantasma")) {
-    		lblDebilidad2.setBackground(new Color(136, 78, 160));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Fuego")) {
-    		lblDebilidad2.setBackground(new Color(249, 9, 9));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Hada")) {
-    		lblDebilidad2.setBackground(new Color(121, 30, 163 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Hielo")) {
-    		lblDebilidad2.setBackground(new Color(34, 254, 240));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Lucha")) {
-    		lblDebilidad2.setBackground(new Color(211, 84, 0));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Normal")) {
-    		lblDebilidad2.setBackground(new Color(237, 187, 153 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Psiquico")) {
-    		lblDebilidad2.setBackground(new Color(210, 180, 222 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Siniestro")) {
-    		lblDebilidad2.setBackground(new Color(171, 178, 185  ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Tierra")) {
-    		lblDebilidad2.setBackground(new Color(120, 66, 18 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Veneno")) {
-    		lblDebilidad2.setBackground(new Color(118, 68, 138 ));
-    	}else if(pokemonInfo.getString(lblDebilidad2).equals("Volador")) {
-    		lblDebilidad2.setBackground(new Color(253, 254, 254 ));
-    	}
-    	//Debilidad 3
-    	if(pokemonInfo.getString(lblDebilidad3).equals("Roca")) {
-    		lblDebilidad3.setBackground(new Color(100, 63, 3));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Acero")) {
-    		lblDebilidad3.setBackground(new Color(97, 106, 107 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Agua")) {
-    		lblDebilidad3.setBackground(new Color(22, 167, 155 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Bicho")) {
-    		lblDebilidad3.setBackground(new Color(56, 167, 22));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Dragon")) {
-    		lblDebilidad3.setBackground(new Color(249, 9, 9 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Eléctrico")) {
-    		lblDebilidad3.setBackground(new Color(226, 249, 9));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Fantasma")) {
-    		lblDebilidad3.setBackground(new Color(136, 78, 160));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Fuego")) {
-    		lblDebilidad3.setBackground(new Color(249, 9, 9));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Hada")) {
-    		lblDebilidad3.setBackground(new Color(121, 30, 163 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Hielo")) {
-    		lblDebilidad3.setBackground(new Color(34, 254, 240));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Lucha")) {
-    		lblDebilidad3.setBackground(new Color(211, 84, 0));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Normal")) {
-    		lblDebilidad3.setBackground(new Color(237, 187, 153 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Psiquico")) {
-    		lblDebilidad3.setBackground(new Color(210, 180, 222 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Siniestro")) {
-    		lblDebilidad3.setBackground(new Color(171, 178, 185  ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Tierra")) {
-    		lblDebilidad3.setBackground(new Color(120, 66, 18 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Veneno")) {
-    		lblDebilidad3.setBackground(new Color(118, 68, 138 ));
-    	}else if(pokemonInfo.getString(lblDebilidad3).equals("Volador")) {
-    		lblDebilidad3.setBackground(new Color(253, 254, 254 ));
-    	}
-    }//FIN CAMBIAR COLORES 
 
 }//FIN CLASS
