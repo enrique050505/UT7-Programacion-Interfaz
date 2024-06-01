@@ -485,7 +485,7 @@ public class InterfazApp extends JFrame {
         JcomboBox_Usuario.setFont(new Font("Arial", Font.BOLD, 18));
         JcomboBox_Usuario.setModel(new DefaultComboBoxModel(new String[] {"Seleccionar Usuario"}));
         JcomboBox_Usuario.setToolTipText("");
-        JcomboBox_Usuario.setBounds(52, 173, 215, 40);
+        JcomboBox_Usuario.setBounds(52, 170, 215, 43);
         contentPane.add(JcomboBox_Usuario);
         rellenarComboBox(JcomboBox_Usuario);
         
@@ -520,7 +520,7 @@ public class InterfazApp extends JFrame {
         });
         btnUsuario.setForeground(new Color(0, 0, 255));
         btnUsuario.setFont(new Font("Verdana", Font.BOLD, 22));
-        btnUsuario.setBounds(277, 170, 280, 41);
+        btnUsuario.setBounds(279, 170, 280, 44);
         contentPane.add(btnUsuario);
         lblIMG_Pokemon.setForeground(new Color(255, 255, 255));
 
